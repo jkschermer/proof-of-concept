@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/fdnd-task/proof-of-concept#readme",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "express": "^5.0.1",
-    "liquidjs": "^10.21.0"
+    "liquidjs": "^10.21.1"
   }
 }
