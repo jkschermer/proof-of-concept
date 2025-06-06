@@ -1,8 +1,7 @@
+{% render 'partials/head.liquid' %}
+
 {% for user in users %}
   <li>{{ user.name }}</li>
 {% endfor %}
 
-
-{% for user in users %}
-  <li>{{ user.id }}</li>
-{% endfor %}
+{% render 'partials/foot.liquid' %}
