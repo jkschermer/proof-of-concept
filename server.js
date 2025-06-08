@@ -12,8 +12,9 @@ app.use(express.urlencoded({extended: true}))
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 app.set('view engine', 'liquid');
-
 app.set('views', './views')
+
+app.use(express.static('public'));
 
 app.get('/mensen-pagina', async (req, res) => {
 
