@@ -8,13 +8,13 @@
 
       {% if user.avatars and user.avatars[0] %}
         <picture>
-          <source type="image/avif" srcset="{{ user.avatars.[0] }}?format=avif">
-          <source type="image/webp" srcset="{{ user.avatars.[0] }}?format=webp">
+            {% comment %} <source type="image/avif" srcset="{{ user.avatars[0] }}&format=avif">
+                      <source type="image/webp" srcset="{{ user.avatars[0] }}&format=webp"> {% endcomment %}
           <img
-            src="{{ user.avatars.[0] }}"
+            src="{{ user.avatars[0] }}"
             alt="profielfoto van {{ user.name }}"
-            width="400"
-            height="300">
+            width=""
+            height="">
         </picture>
       {% else %}
         <p>
