@@ -4,6 +4,24 @@
     margin: 0;
 }
 
+body {
+    -webkit-font-smoothing: antialiased;
+    color: #41453b;
+    font-family: ff-tisa-sans-web-pro, sans-serif;
+    overflow-x: hidden;
+  }
+  
+.heading,h1,h2,h3,h4,h5 {
+    font-family: proxima-nova, sans-serif;
+    font-weight: 900;
+    line-height: 110%;
+  }
+  
+h1 {
+    font-size: 3.25rem;
+    margin: 0 0 2.875rem;
+}
+
 ul.nav-list  {
     list-style-type: none;
     /* margin: 15px; */
