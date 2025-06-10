@@ -6,7 +6,7 @@
 
 body {
     -webkit-font-smoothing: antialiased;
-    color: #41453b;
+    color: var(--text-light-background);
     font-family: ff-tisa-sans-web-pro, sans-serif;
     overflow-x: hidden;
   }

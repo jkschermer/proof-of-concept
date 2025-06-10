@@ -46,4 +46,12 @@
     font-style: normal;
   }
 
-  
+  /* KLEUREN PALLET */
+
+.mensen-pagina {
+  --Q42-green: #84bc2d;
+  --light-background:#ffffff;
+  --text-light-background:#212121 ;
+  --dark-background:#41453b;
+  --text-dark-background:#eeeeee; 
+}
