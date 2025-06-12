@@ -30,7 +30,22 @@ app.get("/mensen-pagina", async (req, res) => {
     const messagesData = await messagesResponse.json();
     const peopleData = await peopleResponse.json();
 
-    console.log(messagesData);
+    // console.log(peopleData[0].tags[0]);
+    // ik haal de eerst persoon op en de tag die daarbij hoort
+
+    // console.log(peopleData);
+
+    // eerst haal ik alle users op door foreach te gebruiken 
+    // en dan doe ik dit ook bij de users.tags zodat ik alle tags kan ophalen
+    // en dan kan ik de tags uitlezen
+
+    peopleData.forEach(users => {
+      users.tags.forEach( tags => {
+      console.log(tags)
+      });
+    });
+
+    // console.log(peopleData[0].tags[0]);
 
     res.render("mensen-pagina", { 
       users: peopleData, 
