@@ -48,7 +48,7 @@
 
 <ul>
 
-<form method="POST" action="/mensen-pagina">
+<form method="POST" action="/mensen-pagina" class="message-form">
 <label for="from">Naam:</label>
 <input type="text" id="from" name="from" required>
 
@@ -58,11 +58,28 @@
 <button type="submit">verzender</button>
 
 </form>
-</ul>
+
+{% if newMessage %}
+<div class="bericht">
+<p>van: {{newMessage.from }}</p>
+<p>bericht {{newMessage.text }}</p>
+</div>
+{% else %}
+  <p>Geen nieuw bericht</p>
+{% endif %}
+
+{% comment %} </ul>
 {% for message in messages %}
  <li>{{message.from }} {{message.text}}</li>
 {% endfor %}
-</ul> 
+</ul>  {% endcomment %}
 </main>
 
 {% render 'partials/foot.liquid' %}
+
+
+<script>
+
+
+
+</script>

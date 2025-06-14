@@ -7,6 +7,15 @@ import { Liquid } from "liquidjs";
 
 const app = express();
 
+import session from 'express-session';
+
+app.use(session({
+  secret: 'een_veilige_geheime_string', 
+  resave: false,
+  saveUninitialized: true,
+  // cookie: { secure: false }  
+}));
+
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 
@@ -50,7 +59,9 @@ app.get("/mensen-pagina", async (req, res) => {
 
     res.render("mensen-pagina", { 
       users: peopleData, 
-      messages: messagesData });
+      messages: messagesData.data,
+      newMessage: req.session.newMessage || null, });
+      // console.log(messagesData)
 
   } catch (err) {
     console.error("Fout bij ophalen:", err);
@@ -61,11 +72,11 @@ app.get("/mensen-pagina", async (req, res) => {
 app.post('/mensen-pagina' , async (req, res) =>  {
   const { from, text } = req.body; 
   // Ik haal de data uit het formulier met request body
-  console.log(req.body)
+  // console.log(req.body)
   
 
  try { 
-  await fetch ('https://fdnd.directus.app/items/messages', {
+  const response = await fetch ('https://fdnd.directus.app/items/messages', {
    method: 'POST',
    headers: {
    'Content-Type':  'application/json',
@@ -73,7 +84,13 @@ app.post('/mensen-pagina' , async (req, res) =>  {
    body: JSON.stringify ({ from, text}),
  });
 
- res.redirect("/mensen-pagina");
+const newMessage = await response.json();
+console.log(newMessage);
+
+req.session.newMessage = newMessage.data;
+    console.log('Sessie newMessage:', req.session.newMessage);
+
+ res.redirect('/mensen-pagina');
 
 } catch (error) {
   console.error('Fout bij versturen bericht:', error);
@@ -81,7 +98,7 @@ app.post('/mensen-pagina' , async (req, res) =>  {
 }
 
 });
-
+ 
 app.get("/", async function (request, response) {
   response.render("index.liquid", {});
 });
