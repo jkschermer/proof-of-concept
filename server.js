@@ -54,13 +54,13 @@ app.get("/mensen-pagina", async (req, res) => {
       });
     });
 
-    // console.log(peopleData[0].tags[0]);
-
     res.render("mensen-pagina", { 
       users: peopleData, 
       messages: messagesData.data,
       // newMessage: req.session.newMessage || null, }); 
-      newMessage: req.session.newMessage || [], });
+      newMessages: req.session.newMessages || [], 
+      likedMessages: req.session.likedMessages || []
+    });
       // console.log(messagesData)
 
   } catch (err) {
@@ -91,9 +91,8 @@ if (!req.session.newMessages) {
 }
 
 req.session.newMessages.push(newMessage.data);
+console.log('Sessie newMessages:', req.session.newMessages);
 
-req.session.newMessage = newMessage.data;
-    console.log('Sessie newMessage:', req.session.newMessage);
 
  res.redirect('/mensen-pagina');
 
@@ -103,6 +102,70 @@ req.session.newMessage = newMessage.data;
 }
 
 });
+
+
+app.post('/like/:id', async function (req, res) {
+  const werknemerId  = req.params.id;
+  const userId = 3; 
+  console.log(werknemerId);
+
+
+try {
+  const postResponse = await fetch('https://fdnd.directus.app/items/messages', {
+    method: 'POST',
+    body: JSON.stringify({
+      from: `user-${userId}`, 
+      text: 'like',  
+      for: `akiko-sprint-12-like-${werknemerId}`
+    }),
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+    }
+  });
+  
+  if (!postResponse.ok) throw new Error('Fout bij het liken');
+
+  // console.log('Like succesvol opgeslagen');
+
+  res.redirect('/mensen-pagina');
+
+} catch (err) {
+  console.error('Fout bij liken:', err.message);
+  res.status(500).send('Kon niet liken');
+}
+
+});
+
+
+// app.post('/like/:id', async(req,res)=> {
+//   const likeId = req.params.id;
+//   console.log(`Like ontvangen voor bericht ID: ${likeId}`);
+//   try {
+
+//     const getResponse = await fetch(`https://fdnd.directus.app/items/messages/${likeId}`);
+//     if (!getResponse.ok) throw new Error('Bericht niet gevonden');
+//     const messageData = await getResponse.json();
+
+//     const currentLikes = messageData.data.likes || 0;
+
+//     const patchResponse = await fetch(`https://fdnd.directus.app/items/messages/${likeId}`, {
+//       method: 'PATCH',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify
+//         ({ likes: currentLikes + 1 }),   
+//     }); 
+
+//     if (!patchResponse.ok) throw new Error('Kon likes niet updaten');
+
+//     console.log(`Likes succesvol bijgewerkt voor bericht ID: ${likeId}`);
+
+//     res.redirect('/mensen-pagina');
+
+//   } catch (error) {
+//     console.error('Fout bij liken:', error);
+//     res.status(500).send('Kon niet liken');
+//   }
+// });
  
 app.get("/", async function (request, response) {
   response.render("index.liquid", {});
