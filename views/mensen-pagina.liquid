@@ -4,20 +4,20 @@
 
   {% comment %} <h2 class="">De mensen van Q42</h2>
 
-      <p class="">Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder.   
-    En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p> {% endcomment %}
+                                      <p class="">Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder.   
+                    En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p> {% endcomment %}
 
 
   {% comment %} Eerst in de server loopen door de tags van de mensen en dan pas de frontend {% endcomment %}
   {% comment %} 
-                              <form action="/">
-                                <label for=""></label>
-                                <select>
-                                  <option value="">Harry potter fan</option>
-                                  <option value="">Partner van de club</option>
-                                  <option value="">Front-end</option>
-                                </select>
-                </form> {% endcomment %}
+                                                              <form action="/">
+                                                                <label for=""></label>
+                                                                <select>
+                                                                  <option value="">Harry potter fan</option>
+                                                                  <option value="">Partner van de club</option>
+                                                                  <option value="">Front-end</option>
+                                                                </select>
+                                </form> {% endcomment %}
 
   <ul class="">
     {% for user in users %}
@@ -25,7 +25,7 @@
         {% if user.avatars and user.avatars[0] %}
           <picture>
               {% comment %} <source type="image/avif" srcset="{{ user.avatars[0] }}&format=avif">
-                                                                                                                                                                                                                                                                                                              <source type="image/webp" srcset="{{ user.avatars[0] }}&format=webp">  {% endcomment %}
+                                                                                                                                                                                                                                                                                                                                                                                                                              <source type="image/webp" srcset="{{ user.avatars[0] }}&format=webp">  {% endcomment %}
             <img
               src="{{ user.avatars[0] }}"
               alt="profielfoto van {{ user.name }}"
@@ -46,40 +46,43 @@
     {% endfor %}
   </ul>
 
-<ul>
+  <ul>
 
-<form method="POST" action="/mensen-pagina" class="message-form">
-<label for="from">Naam:</label>
-<input type="text" id="from" name="from" required>
+    <form
+      method="POST"
+      action="/mensen-pagina"
+      class="message-form">
+      <label for="from">Naam:</label>
+      <input
+        type="text"
+        id="from"
+        name="from"
+        required>
 
-<label for="text">Reactie:</label>
-<input type="text" id="text" name="text" required>
+      <label for="text">Reactie:</label>
+      <input
+        type="text"
+        id="text"
+        name="text"
+        required>
+        
+      <button type="submit">verzender</button>
+    </form>
 
-<button type="submit">verzender</button>
+    {% if newMessage.size > 0 %}
+      {% for message in newMessages %}
+      <div class="bericht">
+        <p>{{ newMessage.from }}</p>
+        <p>{{ newMessage.text }}</p>
+      </div>
+    {% else %}
+      <p>Geen nieuwe berichten</p>
+    {% endif %}
 
-</form>
-
-{% if newMessage %}
-<div class="bericht">
-<p>van: {{newMessage.from }}</p>
-<p>bericht {{newMessage.text }}</p>
-</div>
-{% else %}
-  <p>Geen nieuw bericht</p>
-{% endif %}
-
-{% comment %} </ul>
-{% for message in messages %}
- <li>{{message.from }} {{message.text}}</li>
-{% endfor %}
-</ul>  {% endcomment %}
+  </ul>
 </main>
 
 {% render 'partials/foot.liquid' %}
 
 
-<script>
-
-
-
-</script>
+<script></script>

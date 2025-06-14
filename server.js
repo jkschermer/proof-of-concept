@@ -13,7 +13,6 @@ app.use(session({
   secret: 'een_veilige_geheime_string', 
   resave: false,
   saveUninitialized: true,
-  // cookie: { secure: false }  
 }));
 
 app.use(express.urlencoded({ extended: true }));
@@ -60,7 +59,8 @@ app.get("/mensen-pagina", async (req, res) => {
     res.render("mensen-pagina", { 
       users: peopleData, 
       messages: messagesData.data,
-      newMessage: req.session.newMessage || null, });
+      // newMessage: req.session.newMessage || null, }); 
+      newMessage: req.session.newMessage || [], });
       // console.log(messagesData)
 
   } catch (err) {
@@ -74,7 +74,6 @@ app.post('/mensen-pagina' , async (req, res) =>  {
   // Ik haal de data uit het formulier met request body
   // console.log(req.body)
   
-
  try { 
   const response = await fetch ('https://fdnd.directus.app/items/messages', {
    method: 'POST',
@@ -85,7 +84,13 @@ app.post('/mensen-pagina' , async (req, res) =>  {
  });
 
 const newMessage = await response.json();
-console.log(newMessage);
+// console.log(newMessage);
+
+if (!req.session.newMessages) {
+  req.session.newMessages = [];
+}
+
+req.session.newMessages.push(newMessage.data);
 
 req.session.newMessage = newMessage.data;
     console.log('Sessie newMessage:', req.session.newMessage);
