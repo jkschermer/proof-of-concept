@@ -8,6 +8,7 @@ import { Liquid } from "liquidjs";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 const engine = new Liquid();
 app.engine("liquid", engine.express());
@@ -41,7 +42,7 @@ app.get("/mensen-pagina", async (req, res) => {
 
     peopleData.forEach(users => {
       users.tags.forEach( tags => {
-      console.log(tags)
+      // console.log(tags)
       });
     });
 
@@ -55,6 +56,30 @@ app.get("/mensen-pagina", async (req, res) => {
     console.error("Fout bij ophalen:", err);
     res.status(500).send("Fout bij het ophalen van data");
   }
+});
+
+app.post('/mensen-pagina' , async (req, res) =>  {
+  const { from, text } = req.body; 
+  // Ik haal de data uit het formulier met request body
+  console.log(req.body)
+  
+
+ try { 
+  await fetch ('https://fdnd.directus.app/items/messages', {
+   method: 'POST',
+   headers: {
+   'Content-Type':  'application/json',
+   },
+   body: JSON.stringify ({ from, text}),
+ });
+
+ res.redirect("/mensen-pagina");
+
+} catch (error) {
+  console.error('Fout bij versturen bericht:', error);
+  res.status(500).send('Kon bericht niet versturen');
+}
+
 });
 
 app.get("/", async function (request, response) {
