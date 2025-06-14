@@ -4,20 +4,20 @@
 
   {% comment %} <h2 class="">De mensen van Q42</h2>
 
-                                                                                                                                                              <p class="">Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder.   
-                                                                                En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p> {% endcomment %}
+                                                                                                                                                                                                                      <p class="">Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder.   
+                                                                                                            En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p> {% endcomment %}
 
 
   {% comment %} Eerst in de server loopen door de tags van de mensen en dan pas de frontend {% endcomment %}
   {% comment %} 
-                                                                                                                                                                                      <form action="/">
-                                                                                                                                                                                        <label for=""></label>
-                                                                                                                                                                                        <select>
-                                                                                                                                                                                          <option value="">Harry potter fan</option>
-                                                                                                                                                                                          <option value="">Partner van de club</option>
-                                                                                                                                                                                          <option value="">Front-end</option>
-                                                                                                                                                                                        </select>
-                                                                                            </form> {% endcomment %}
+                                                                                                                                                                                                                                              <form action="/">
+                                                                                                                                                                                                                                                <label for=""></label>
+                                                                                                                                                                                                                                                <select>
+                                                                                                                                                                                                                                                  <option value="">Harry potter fan</option>
+                                                                                                                                                                                                                                                  <option value="">Partner van de club</option>
+                                                                                                                                                                                                                                                  <option value="">Front-end</option>
+                                                                                                                                                                                                                                                </select>
+                                                                                                                        </form> {% endcomment %}
 
   <ul class="">
     {% for user in users %}
@@ -25,7 +25,7 @@
         {% if user.avatars and user.avatars[0] %}
           <picture>
               {% comment %} <source type="image/avif" srcset="{{ user.avatars[0] }}&format=avif">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <source type="image/webp" srcset="{{ user.avatars[0] }}&format=webp">  {% endcomment %}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <source type="image/webp" srcset="{{ user.avatars[0] }}&format=webp">  {% endcomment %}
             <img
               src="{{ user.avatars[0] }}"
               alt="profielfoto van {{ user.name }}"
@@ -52,7 +52,10 @@
       action="/like/{{ message.id }}"
       class="like-form">
       <button type="submit" class="like-btn">
-        <img src="{% if message.likedByCurrentUser %}assets/HeartFilled.svg{% else %}assets/HeartEmpty.svg{% endif %}" alt="Like" />
+        <img
+          src="/assets/HeartEmpty.svg"
+          class="like"
+          alt="Like" />
       </button>
     </form>
   {% endfor %}
@@ -82,16 +85,16 @@
     </form>
 
     {% comment %} alle berichten tonen 
-                                                                                              {% if newMessages %}
-                                                                                                {% for message in newMessages %}
-                                                                                                  <div class="bericht">
-                                                                                                    <p>{{ message.from }}</p>
-                                                                                                    <p>{{ message.text }}</p>
-                                                                                                  </div>
-                                                                                                {% endfor %}
-                                                                                              {% else %}
-                                                                                                <p>Geen nieuwe berichten</p>
-                                                                {% endif %} {% endcomment %}
+                                                                                                                                                                                  {% if newMessages %}
+                                                                                                                                                                                    {% for message in newMessages %}
+                                                                                                                                                                                      <div class="bericht">
+                                                                                                                                                                                        <p>{{ message.from }}</p>
+                                                                                                                                                                                        <p>{{ message.text }}</p>
+                                                                                                                                                                                      </div>
+                                                                                                                                                                                    {% endfor %}
+                                                                                                                                                                                  {% else %}
+                                                                                                                                                                                    <p>Geen nieuwe berichten</p>
+                                                                                                                        {% endif %} {% endcomment %}
 
     {% comment %} alleen de eerste reactie tonen {% endcomment %}
     {% if newMessages.size > 0 %}
@@ -112,8 +115,16 @@
 
 <script>
   document.querySelectorAll('.like-form').forEach(form => {
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Voorkomt herladen van de pagina
+  form.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Voorkomt herladen van de pagina
 
+  const likeIcon = form.querySelector('.like');
+  likeIcon.src = 'assets/HeartFilled.svg';
+
+  fetch(form.action, {
+   method: POST,
+   }).catch(err => console.error('Error liken:', err));
+  });
+  });
 
 </script>
