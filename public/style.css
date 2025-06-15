@@ -130,14 +130,39 @@ ul li.users {
     margin: 0;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
     position: absolute;
     width: 1em;
     height: 1em;
     opacity:0;
+} */
+
+.visually-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+} 
+
+  /* .avatar {
+    border: 2px dashed red;
+  } */
+  
+
+.avatar-1 {
+    display: none;
 }
 
-img.heart-1 {
+.avatars-toggle input[type="checkbox"]:checked ~ .avatar-0 {
+    display: none;
+}
+
+.avatars-toggle input[type="checkbox"]:checked ~ .avatar-1 {
+    display: inline;
+}
+
+
+
+/* img.heart-1 {
     display: none;
 }
 
@@ -147,8 +172,7 @@ input[type="checkbox"]:checked ~ img.heart-2 {
 
 input[type="checkbox"]:checked ~ img.heart-1 {
     display:inline;
-} 
-
+}  */
 
 .message-form {
     display: flex;

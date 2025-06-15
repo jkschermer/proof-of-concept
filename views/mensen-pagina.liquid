@@ -10,38 +10,58 @@
   <ul class="user-list">
     {% for user in users %}
       <li class="users">
-        {% if user.avatars and user.avatars[0] %}
-          {% comment %} <label for="" class=""></label>
-                                              <input
-                                                type="checkbox"
-                                                id=""
-                                          class=""> {% endcomment %}
-          <picture>
+        {% comment %} id="toggle-{{ loop.index }}" {% endcomment %}
+        {% comment %} <label class="avatars-toggle" for="toggle-{{ loop.index }}"> {% endcomment %}
+          <label class="avatars-toggle">
+          <input
+            type="checkbox"
+            class="visually-hidden">
+          {% if user.avatars and user.avatars[0] %}
+
             <img
               src="{{ user.avatars[0] }}"
               alt="profielfoto van {{ user.name }}"
               width="300"
               height="300"
-              loading="lazy">
-          </picture>
-          <div class="text-block">
-            <h2>{{ user.name }}</h2>
-            <p>{{ user.email }}</p>
-          </div>
-        {% else %}
-          <p>
-            Geen afbeelding beschikbaar
-          </p>
-        {% endif %}
+              loading="lazy"
+              class="avatar avatar-0">
+          {% endif %}
 
-        <label for="" class="">
-          <input
-            type="checkbox"
-            id="toggle"
-            class="visually-hidden">
-          <img src="/assets/HeartFilled.svg" class="heart-1">
-          <img src="/assets/HeartEmpty.svg" class="heart-2">
+
+          {% if user.avatars and user.avatars[1] %}
+
+            <img
+              src="{{ user.avatars[1] }}"
+              alt="profielfoto van {{ user.name }}"
+              width="300"
+              height="300"
+              loading="lazy"
+              class="avatar avatar-1">
+
+          {% else %}
+            <p>
+              Geen afbeelding beschikbaar
+            </p>
+          {% endif %}
         </label>
+
+
+        {% comment %} <div class="text-block">
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.email }}</p>
+      </div> 
+{% else %}
+<p>
+Geen afbeelding beschikbaar {% endcomment %}
+</p> 
+        {% comment %} <label for="" class="">
+                                                                                                                        <input
+                                                                                                                          type="checkbox"
+                                                                                                                          id="toggle"
+                                                                                                                          class="visually-hidden">
+                                                                                                                        <img src="/assets/HeartFilled.svg" class="heart-1">
+                                                                                                                        <img src="/assets/HeartEmpty.svg" class="heart-2">
+                                                                                                </label> {% endcomment %}
 
         {% for message in messages %}
           <form
