@@ -2,12 +2,12 @@
 
 <main class="container">
 
-<section>
-  <h1>De mensen van Q42</h1>
-  <p>Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder. En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p>
-</section>
+  <section>
+    <h1>De mensen van Q42</h1>
+    <p>Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder. En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p>
+  </section>
 
-  <ul class="">
+  <ul class="user-list">
     {% for user in users %}
       <li class="users">
         {% if user.avatars and user.avatars[0] %}
@@ -28,131 +28,138 @@
             Geen afbeelding beschikbaar
           </p>
         {% endif %}
+
+        <input
+          type="checkbox"
+          id=""
+          class="">
+        <label for="" class=""></label>
+
+        {% for message in messages %}
+          <form
+            method="POST"
+            action="/like/{{ message.id }}"
+            class="like-form">
+            <button type="submit" class="like-btn">
+              <img
+                src="/assets/HeartEmpty.svg"
+                class="like"
+                alt="Like" />
+            </button>
+          </form>
+        {% endfor %}
+
+        <form
+          method="POST"
+          action="/mensen-pagina"
+          class="message-form">
+          <label for="from">Naam:</label>
+          <input
+            type="text"
+            id="from"
+            name="from"
+            required>
+
+          <label for="text">Reactie:</label>
+          <input
+            type="text"
+            id="text"
+            name="text"
+            required>
+
+          <button type="submit">verzenden</button>
+        </form>
+
+        {% comment %} alleen de eerste reactie tonen {% endcomment %}
+        {% if newMessages.size > 0 %}
+          <div class="bericht">
+            <p>{{ newMessages[0].from }}</p>
+            <p>{{ newMessages[0].text }}</p>
+          </div>
+        {% else %}
+          <p>Geen nieuwe berichten</p>
+        {% endif %}
+
       </li>
     {% endfor %}
   </ul>
 
-  {% for message in messages %}
-    <form
-      method="POST"
-      action="/like/{{ message.id }}"
-      class="like-form">
-      <button type="submit" class="like-btn">
-        <img
-          src="/assets/HeartEmpty.svg"
-          class="like"
-          alt="Like" />
-      </button>
-    </form>
-  {% endfor %}
-
-
-    <form
-      method="POST"
-      action="/mensen-pagina"
-      class="message-form">
-      <label for="from">Naam:</label>
-      <input
-        type="text"
-        id="from"
-        name="from"
-        required>
-
-      <label for="text">Reactie:</label>
-      <input
-        type="text"
-        id="text"
-        name="text"
-        required>
-
-      <button type="submit">verzender</button>
-    </form>
-
-    {% comment %} alleen de eerste reactie tonen {% endcomment %}
-    {% if newMessages.size > 0 %}
-      <div class="bericht">
-        <p>{{ newMessages[0].from }}</p>
-        <p>{{ newMessages[0].text }}</p>
-      </div>
-    {% else %}
-      <p>Geen nieuwe berichten</p>
-    {% endif %}
-
-
-  </ul>
-
   <section class="vacatures">
-  <h3>Ook werken bij Q42?</h3>
-  <p>Hou jij van mooie web-, app-, IoT- of VR-dingen programmeren? En van de eindgebruiker verbazen? Dan willen wij graag met jou praten! Want wij zijn altijd op zoek naar knappe koppen. Check dus snel<a href="onze-vacatures">onze vacatures!</a></p>
+    <h3>Ook werken bij Q42?</h3>
+    <p>Hou jij van mooie web-, app-, IoT- of VR-dingen programmeren? En van de eindgebruiker verbazen? Dan willen wij graag met jou praten! Want wij zijn altijd op zoek naar knappe koppen. Check dus snel<a href="onze-vacatures">onze vacatures!</a>
+    </p>
 
-<article class="vacature">
-  <h3>Stage</h3>
-  <p>Internship</p>
-  <p>Den haag en/of Amsterdam </p>
-</article>
+    <article class="vacature">
+      <h3>Stage</h3>
+      <p>Internship</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </article>
 
-<article class="vacature">
-  <h3>Open sollicitatie</h3>
-  <p>Full-time</p>
-  <p>Den haag en/of Amsterdam </p>
-</article>
+    <article class="vacature">
+      <h3>Open sollicitatie</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </article>
 
-<article class="vacature">
-  <h3>Front-end Developer</h3>
-  <p>Full-time</p>
-  <p>Den haag en/of Amsterdam </p>
-</article>
+    <article class="vacature">
+      <h3>Front-end Developer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </article>
 
-<article class="vacature">
-  <h3>Ervaren.NET back-end developer</h3>
-  <p>Full-time</p>
-  <p>Den haag en/of Amsterdam </p>
-</article>
+    <article class="vacature">
+      <h3>Ervaren.NET back-end developer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </article>
 
-<article class="vacature">
-  <h3>Android-developer</h3>
-  <p>Full-time</p>
-  <p>Amsterdam en/of Den Haag</p>
-</article>
+    <article class="vacature">
+      <h3>Android-developer</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </article>
 
-<article class="vacature">
-  <h3>Ervaren Go Developer</h3>
-  <p>Full-time</p>
-  <p>Den Haag</p>
-</article>
+    <article class="vacature">
+      <h3>Ervaren Go Developer</h3>
+      <p>Full-time</p>
+      <p>Den Haag</p>
+    </article>
 
-<article class="vacature">
-  <h3>Allround back-end developer(senior)</h3>
-  <p>Full-time</p>
-  <p>Amsterdam en/of Den Haag</p>
-</article>
+    <article class="vacature">
+      <h3>Allround back-end developer(senior)</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </article>
 
-<article class="vacature">
-  <h3>Techlead / senior software engineer</h3>
-  <p>Full-time</p>
-  <p>Amsterdam en/of Den Haag</p>
-</article>
+    <article class="vacature">
+      <h3>Techlead / senior software engineer</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </article>
 
-<article class="vacature">
-  <h3>AI-engineer</h3>
-  <p>Full-time</p>
-  <p>Den haag en/of Amsterdam </p>
-</article>
+    <article class="vacature">
+      <h3>AI-engineer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </article>
 
-<a href="https://werkenbij.q42.nl">Bekijk alle vacatures op homerun</a>
+    <a href="https://werkenbij.q42.nl">Bekijk alle vacatures op homerun</a>
 
-</section>
+  </section>
 
-<div class="eclipse-achtergrond">
-</div>
-<p>browse</p>
+  <div class="eclipse-achtergrond"></div>
+  <p>browse</p>
 
-<ul class="talen">
-  <li>Nederlands</li>
-  <li>Engels</li>
-  <li>Haags</li>
-</ul>
-
+  <ul class="talen">
+    <li>Nederlands</li>
+    <li>Engels</li>
+    <li>Haags</li>
+  </ul>
 
 
 </main>
