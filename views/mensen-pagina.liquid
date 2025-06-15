@@ -12,10 +12,8 @@
       <li class="users">
         {% comment %} id="toggle-{{ loop.index }}" {% endcomment %}
         {% comment %} <label class="avatars-toggle" for="toggle-{{ loop.index }}"> {% endcomment %}
-          <label class="avatars-toggle">
-          <input
-            type="checkbox"
-            class="visually-hidden">
+        <label class="avatars-toggle">
+          <input type="checkbox" class="visually-hidden">
           {% if user.avatars and user.avatars[0] %}
 
             <img
@@ -46,22 +44,22 @@
         </label>
 
 
-        {% comment %} <div class="text-block">
+        <div class="text-block">
           <h2>{{ user.name }}</h2>
           <p>{{ user.email }}</p>
-      </div> 
-{% else %}
-<p>
-Geen afbeelding beschikbaar {% endcomment %}
-</p> 
+        </div>
+      {% else %}
+        <p>
+          Geen afbeelding beschikbaar
+        </p>
         {% comment %} <label for="" class="">
-                                                                                                                        <input
-                                                                                                                          type="checkbox"
-                                                                                                                          id="toggle"
-                                                                                                                          class="visually-hidden">
-                                                                                                                        <img src="/assets/HeartFilled.svg" class="heart-1">
-                                                                                                                        <img src="/assets/HeartEmpty.svg" class="heart-2">
-                                                                                                </label> {% endcomment %}
+                                                                                                                                  <input
+                                                                                                                                    type="checkbox"
+                                                                                                                                    id="toggle"
+                                                                                                                                    class="visually-hidden">
+                                                                                                                                  <img src="/assets/HeartFilled.svg" class="heart-1">
+                                                                                                                                  <img src="/assets/HeartEmpty.svg" class="heart-2">
+                                                                                                        </label> {% endcomment %}
 
         {% for message in messages %}
           <form
