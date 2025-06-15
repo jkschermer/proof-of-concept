@@ -118,13 +118,37 @@ ul li.users {
 
 .text-block {
     position: absolute;
-    bottom: 8px;
-    left:5px;
+    bottom: 160px;
+    left:1px;
     width: 200px;
     background-color: pink;
     padding: 10px;
     z-index: 10;
 }
+
+.text-block h2 {
+    margin: 0;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    opacity:0;
+}
+
+img.heart-1 {
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ img.heart-2 {
+    display:none;
+}
+
+input[type="checkbox"]:checked ~ img.heart-1 {
+    display:inline;
+} 
+
 
 .message-form {
     display: flex;

@@ -11,6 +11,11 @@
     {% for user in users %}
       <li class="users">
         {% if user.avatars and user.avatars[0] %}
+          {% comment %} <label for="" class=""></label>
+                                              <input
+                                                type="checkbox"
+                                                id=""
+                                          class=""> {% endcomment %}
           <picture>
             <img
               src="{{ user.avatars[0] }}"
@@ -29,11 +34,14 @@
           </p>
         {% endif %}
 
-        <input
-          type="checkbox"
-          id=""
-          class="">
-        <label for="" class=""></label>
+        <label for="" class="">
+          <input
+            type="checkbox"
+            id="toggle"
+            class="visually-hidden">
+          <img src="/assets/HeartFilled.svg" class="heart-1">
+          <img src="/assets/HeartEmpty.svg" class="heart-2">
+        </label>
 
         {% for message in messages %}
           <form
