@@ -48,9 +48,14 @@ app.get("/mensen-pagina", async (req, res) => {
     // en dan doe ik dit ook bij de users.tags zodat ik alle tags kan ophalen
     // en dan kan ik de tags uitlezen
 
+    const allTags = []; 
+    // maak een lege array of lege lijst
+
     peopleData.forEach(users => {
-      users.tags.forEach( tags => {
-      // console.log(tags)
+      users.tags.forEach( tag => {
+        allTags.push(tag);
+   // met push (is een functie die je kan gebruiken op een arrray) voeg je het item toe aan de lijst all tags
+        // console.log(allTags); 
       });
     });
 
