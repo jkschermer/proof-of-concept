@@ -191,6 +191,15 @@ input[type="checkbox"]:checked ~ img.heart-1 {
   display: none;
 }
 
+
+.talen {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
 /* footer */
 
 .footer-container {
