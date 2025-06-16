@@ -152,6 +152,12 @@ ul li.users {
     margin-bottom: 10px;
 }
 
+img.right-arrow {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
 @media (min-width: 760px) { 
     .vacature .lines  {
         display: flex;
@@ -160,6 +166,8 @@ ul li.users {
         align-items: center;
         gap: 1em;
     }
+
+    
 
 }
 
