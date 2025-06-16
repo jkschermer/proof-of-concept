@@ -51,6 +51,17 @@ ul {
     text-decoration: none;
 }
 
+
+@media (min-width: 760px) { 
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+}
+
 /* .hidden {
     position: absolute;
     opacity: 0;
@@ -60,15 +71,6 @@ ul {
 /* .hamburger-icoon {
     display: none;
 } */
-
-input[type="checkbox"]:checked ~ img.heart-2 {
-    display:none;
-}
-
-input[type="checkbox"]:checked ~ img.heart-1 {
-    display:inline;
-}  
-
 
 /* .menu-text {
     margin-top: 10px;
