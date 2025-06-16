@@ -66,8 +66,9 @@ ul {
 
 .close-icoon {
     display: inline-block;
-    margin-left: 120px;
+    margin-left: auto;
 }
+
 
 main.container {
     display: flex;
@@ -77,13 +78,27 @@ main.container {
     align-items: flex-start;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    /* max-width: 1300px; */
     /* margin: 0 auto; */
+    width: 100%;
+}
+
+.users {
+    list-style-type: none;
+    flex: 0 1 300px; 
+    padding: 5px 0;
 }
 
 .user-list {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
+    /* justify-content: center; */
+    /* margin: 0 auto;  */
     gap: 0.5rem;
+    /* width: 100%; */
+    /* max-width: 1400px; */
 }
 
 ul li.users {
@@ -91,7 +106,7 @@ ul li.users {
     width: 300px;
     padding-top: 5px;
     padding-bottom: 5px;
-}
+} 
 
 .text-block {
     position: absolute;
@@ -101,10 +116,17 @@ ul li.users {
     background-color: pink;
     padding: 10px;
     z-index: 10;
+    display: none;
 }
 
 .text-block h2 {
     margin: 0;
+}
+
+@media (max-width: 768px)  {
+    .user-list {
+        padding-left: 1.5rem;
+    }
 }
 
 .visually-hidden {
@@ -130,10 +152,15 @@ ul li.users {
     flex-direction: column;
     width: 300px;
     gap: 5px;
+    margin-top: 0;
     /* display: none; */
-}
+} 
 
 .like-form {
+    display: none;
+}
+
+.bericht {
     display: none;
 }
 
@@ -142,6 +169,11 @@ ul li.users {
     flex-direction: column;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.vacature-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .lines {
@@ -156,17 +188,43 @@ img.right-arrow {
     width: 30px;
     height: 30px;
     object-fit: cover;
+    margin-left: auto;
 }
 
 @media (min-width: 760px) { 
-    .vacature .lines  {
+
+    .vacature .lines {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 1em;
+        gap: 1em; */
     }
 
+    .vacature-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left; 
+        gap: 2em;
+        margin: 0 auto;
+    }
+
+    .vacature-info > * {
+        display: block;
+        flex: 0 0 auto; 
+        margin: 0;
+        padding: 0;
+      }
+
+      .vacature-info h3,
+      .vacature-info p {
+       min-width: 120px;
+      }
     
 
 }

@@ -10,8 +10,6 @@
   <ul class="user-list">
     {% for user in users %}
       <li class="users">
-        {% comment %} id="toggle-{{ loop.index }}" {% endcomment %}
-        {% comment %} <label class="avatars-toggle" for="toggle-{{ loop.index }}"> {% endcomment %}
         <label class="avatars-toggle">
           <input type="checkbox" class="visually-hidden">
           {% if user.avatars and user.avatars[0] %}
@@ -48,18 +46,6 @@
           <h2>{{ user.name }}</h2>
           <p>{{ user.email }}</p>
         </div>
-      {% else %}
-        <p>
-          Geen afbeelding beschikbaar
-        </p>
-        {% comment %} <label for="" class="">
-                                                                                                                                                                                                                                                                                                                                                                                                                <input
-                                                                                                                                                                                                                                                                                                                                                                                                                  type="checkbox"
-                                                                                                                                                                                                                                                                                                                                                                                                                  id="toggle"
-                                                                                                                                                                                                                                                                                                                                                                                                                  class="visually-hidden">
-                                                                                                                                                                                                                                                                                                                                                                                                                <img src="/assets/HeartFilled.svg" class="heart-1">
-                                                                                                                                                                                                                                                                                                                                                                                                                <img src="/assets/HeartEmpty.svg" class="heart-2">
-                                                                                                                                                                                                                                                                                                                                </label> {% endcomment %}
 
         {% for message in messages %}
           <form
@@ -105,7 +91,6 @@
         {% else %}
           <p>Geen nieuwe berichten</p>
         {% endif %}
-
       </li>
     {% endfor %}
   </ul>
@@ -118,81 +103,99 @@
 
   <article class="vacature">
     <div class="lines"></div>
-    <h3>Stage</h3>
-    <p>Internship</p>
-    <p>Den haag en/of Amsterdam
-    </p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Stage</h3>
+      <p>Internship</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
 
   <article class="vacature">
-    <h3>Open sollicitatie</h3>
-    <p>Full-time</p>
-    <p>Den haag en/of Amsterdam
-    </p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Open sollicitatie</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Front-end Developer</h3>
-    <p>Full-time</p>
-    <p>Den haag en/of Amsterdam
-    </p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Front-end Developer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Ervaren.NET back-end developer</h3>
-    <p>Full-time</p>
-    <p>Den haag en/of Amsterdam
-    </p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Ervaren.NET back-end developer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Android-developer</h3>
-    <p>Full-time</p>
-    <p>Amsterdam en/of Den Haag</p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Android-developer</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Ervaren Go Developer</h3>
-    <p>Full-time</p>
-    <p>Den Haag</p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Ervaren Go Developer</h3>
+      <p>Full-time</p>
+      <p>Den Haag</p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Allround back-end developer(senior)</h3>
-    <p>Full-time</p>
-    <p>Amsterdam en/of Den Haag</p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Allround back-end developer(senior)</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>Techlead / senior software engineer</h3>
-    <p>Full-time</p>
-    <p>Amsterdam en/of Den Haag</p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>Techlead / senior software engineer</h3>
+      <p>Full-time</p>
+      <p>Amsterdam en/of Den Haag</p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <article class="vacature">
-    <h3>AI-engineer</h3>
-    <p>Full-time</p>
-    <p>Den haag en/of Amsterdam
-    </p>
-    <div class="lines"></div>
+    <div class="vacature-info">
+      <h3>AI-engineer</h3>
+      <p>Full-time</p>
+      <p>Den haag en/of Amsterdam
+      </p>
+    </div>
     <img src="/assets/chevron.svg" class="right-arrow">
+    <div class="lines"></div>
   </article>
 
   <a href="https://werkenbij.q42.nl" class="vacature-btn">Bekijk alle vacatures op homerun</a>
