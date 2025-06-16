@@ -26,9 +26,11 @@
   },
   "homepage": "https://github.com/fdnd-task/proof-of-concept#readme",
   "dependencies": {
+    "connect-redis": "^9.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.0.1",
     "express-session": "^1.18.1",
-    "liquidjs": "^10.21.1"
+    "liquidjs": "^10.21.1",
+    "redis": "^5.5.6"
   }
 }

@@ -5,7 +5,7 @@ import express from "express";
 
 import { Liquid } from "liquidjs";
 
-const app = express();
+const app = express(); 
 
 import session from 'express-session';
 
@@ -13,6 +13,7 @@ app.use(session({
   secret: 'een_veilige_geheime_string', 
   resave: false,
   saveUninitialized: true,
+  // cookie: { secure: false }
 }));
 
 app.use(express.urlencoded({ extended: true }));
@@ -58,6 +59,9 @@ app.get("/mensen-pagina", async (req, res) => {
         // console.log(allTags); 
       });
     });
+
+     console.log('req.session:', req.session);
+    console.log('req.session.newMessages:', req.session?.newMessages);
 
     res.render("mensen-pagina", { 
       users: peopleData, 
@@ -172,9 +176,6 @@ try {
 //   }
 // });
  
-app.get("/", async function (request, response) {
-  response.render("index.liquid", {});
-});
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
