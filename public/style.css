@@ -191,6 +191,22 @@ input[type="checkbox"]:checked ~ img.heart-1 {
   display: none;
 }
 
+.ronde-vorm {
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 300px;
+  height: 100px;
+  background-color: black;
+}
+
+.browse {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1em; */
+    margin: 0 auto;
+}
 
 .talen {
     display: flex;
@@ -198,6 +214,7 @@ input[type="checkbox"]:checked ~ img.heart-1 {
     justify-content: center;
     align-items: center;
     gap: 1em;
+    margin: 0 auto;
 }
 
 /* footer */
