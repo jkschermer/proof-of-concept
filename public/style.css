@@ -137,6 +137,32 @@ ul li.users {
     display: none;
 }
 
+.vacature {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.lines {
+    height: 2px;
+    width: 100vw;
+    background-color: pink;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 760px) { 
+    .vacature .lines  {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+}
+
 .ronde-vorm {
     border-top-left-radius: 100% 20px;
     border-top-right-radius: 100% 20px;
