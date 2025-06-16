@@ -214,8 +214,6 @@ input[type="checkbox"]:checked ~ img.heart-1 {
     gap:0.5rem;
 }
 
-
-
 .snel-naar {
     grid-area: snelnaar;
 }
@@ -228,9 +226,11 @@ input[type="checkbox"]:checked ~ img.heart-1 {
     grid-area: contact;
 }
 
-
 .social-media {
     grid-area: social;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-bottom {
