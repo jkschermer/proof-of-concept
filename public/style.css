@@ -28,22 +28,26 @@ h1 {
     margin: 0 0 2.875rem;
 }
 
-/* .top-nav {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-end;
-   padding: 10px;
-   position: relative;
-} */
+.menu-toggle {
+    position: absolute;
+    opacity: 0;
+} 
+
+ /* .menu-toggle:checked + menu.button  {
+    display: none;
+}  */
+
+.menu-toggle:checked ~ nav {
+    display: block;
+}
 
 ul {
     list-style-type: none;
 }
 
-/* li {
-    position: relative;
-    display: inline-block;
-} */
+nav {
+    display: none;
+}
 
 .nav-list a {
     /* color: inherit; */
@@ -53,13 +57,29 @@ ul {
 
 
 @media (min-width: 760px) { 
-.nav-list {
+    .nav-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1em;
 }
+
+   nav {
+    display: block;
+   }
+
+    .menu-button {
+    display: none;
+   }
+
+   img.close-icoon {
+    display: none;
+   }
+
+   .contact {
+    display: none;
+   }
 }
 
 /* .hidden {
