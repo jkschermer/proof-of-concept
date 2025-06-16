@@ -48,7 +48,7 @@
 
   /* KLEUREN PALLET */
 
-.mensen-pagina {
+:root {
   --Q42-green: #84bc2d;
   --light-background:#ffffff;
   --text-light-background:#212121 ;

@@ -5,8 +5,8 @@
 }
 
 body {
-    color: var(--text-light-background);
-    background-color: var(--dark-background);
+    color: black;
+    background-color: white;
     font-family: ff-tisa-sans-web-pro, sans-serif;
   }
   
@@ -134,15 +134,15 @@ ul li.users {
 }
 
 .like-form {
-  display: none;
+    display: none;
 }
 
 .ronde-vorm {
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  width: 300px;
-  height: 100px;
-  background-color: black;
+    border-top-left-radius: 100% 20px;
+    border-top-right-radius: 100% 20px;
+    width: 300px;
+    height: 100px;
+    background-color: var(--dark-background);
 }
 
 .browse {
@@ -152,6 +152,7 @@ ul li.users {
     align-items: center;
     /* gap: 1em; */
     margin: 0 auto;
+    color: var(--text-dark-background);
 }
 
 .talen {
@@ -161,6 +162,7 @@ ul li.users {
     align-items: center;
     gap: 1em;
     margin: 0 auto;
+    color: var(--text-dark-background);
 }
 
 /* footer */
