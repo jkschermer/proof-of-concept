@@ -95,9 +95,9 @@ main.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    /* justify-content: center; */
-    /* margin: 0 auto;  */
+    /* align-items: flex-start; */
+    justify-content: center;
+    margin: 0 auto; 
     gap: 0.5rem;
     /* width: 100%; */
     /* max-width: 1400px; */
@@ -127,8 +127,13 @@ ul li.users {
 
 @media (max-width: 768px)  {
     .user-list {
-        padding-left: 1.5rem;
+        justify-content: center;
+        /* padding-left: 1.5rem; */
     }
+
+    main.container {
+        align-items: center;
+      }
 }
 
 .visually-hidden {
@@ -163,7 +168,7 @@ ul li.users {
 }
 
 .bericht {
-    /* display: none; */
+    display: none;
 }
 
 .vacature {

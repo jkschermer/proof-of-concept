@@ -7,17 +7,17 @@ import { Liquid } from "liquidjs";
 
 const app = express(); 
 
-import session from 'express-session';
+// import session from 'express-session';
 
-app.use(session({
-  secret: 'een_veilige_geheime_string', 
-  resave: false,
-  saveUninitialized: true,
-  // cookie: { secure: false }
-}));
+// app.use(session({
+//   secret: 'een_veilige_geheime_string', 
+//   resave: false,
+//   saveUninitialized: true,
+//   // cookie: { secure: false }
+// }));
 
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.json());
 
 const engine = new Liquid();
 app.engine("liquid", engine.express());
@@ -38,6 +38,7 @@ app.get("/mensen-pagina", async (req, res) => {
     ]);
 
     const messagesData = await messagesResponse.json();
+    console.log(messagesData);
     const peopleData = await peopleResponse.json();
 
     // console.log(peopleData[0].tags[0]);
@@ -64,8 +65,8 @@ app.get("/mensen-pagina", async (req, res) => {
       users: peopleData, 
       messages: messagesData.data,
       // newMessage: req.session.newMessage || null, }); 
-      newMessages: req.session.newMessages || [], 
-      likedMessages: req.session.likedMessages || []
+      // newMessages: req.session.newMessages || [], 
+      // likedMessages: req.session.likedMessages || []
     });
       // console.log(messagesData)
 
@@ -92,12 +93,12 @@ app.post('/mensen-pagina' , async (req, res) =>  {
 const newMessage = await response.json();
 // console.log(newMessage);
 
-if (!req.session.newMessages) {
-  req.session.newMessages = [];
-}
+// if (!req.session.newMessages) {
+//   req.session.newMessages = [];
+// }
 
-req.session.newMessages.push(newMessage.data);
-console.log('Sessie newMessages:', req.session.newMessages);
+// req.session.newMessages.push(newMessage.data);
+// console.log('Sessie newMessages:', req.session.newMessages);
 
 
  res.redirect('/mensen-pagina');
@@ -129,11 +130,22 @@ try {
     }
   });
   
-  if (!postResponse.ok) throw new Error('Fout bij het liken');
+  console.log('hoi');
 
+  const responseData = await postResponse.json();
+console.log(responseData);
+  if (!postResponse.ok) throw new Error('Fout bij het liken');
+  
+
+  res.render("mensen-pagina", {  
+    messages: responseData,
+    // newMessage: req.session.newMessage || null, }); 
+    // newMessages: req.session.newMessages || [], 
+    // likedMessages: req.session.likedMessages || []
+  });
   // console.log('Like succesvol opgeslagen');
 
-  res.redirect('/mensen-pagina');
+  // res.redirect('/mensen-pagina');
 
 } catch (err) {
   console.error('Fout bij liken:', err.message);
