@@ -5,8 +5,10 @@
 }
 
 body {
-    color: black;
+    /* color: var(--light-background); */
+    /* background-color: var(--text-light-background); */
     background-color: white;
+    color: black;
     font-family: ff-tisa-sans-web-pro, sans-serif;
   }
   
@@ -161,7 +163,7 @@ ul li.users {
 }
 
 .bericht {
-    display: none;
+    /* display: none; */
 }
 
 .vacature {
@@ -176,6 +178,11 @@ ul li.users {
     flex-direction: column;
 }
 
+.vacature-info > * {
+    min-width: auto;
+    margin: 0;
+}
+
 .lines {
     height: 2px;
     width: 100vw;
@@ -187,15 +194,16 @@ ul li.users {
 img.right-arrow {
     width: 30px;
     height: 30px;
-    object-fit: cover;
+    object-fit: contain;
     margin-left: auto;
+    align-self: flex-start;
 }
 
 @media (min-width: 760px) { 
 
     .vacature .lines {
         display: flex;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         align-items: center;
         /* display: flex;
         flex-direction: row;
@@ -207,23 +215,28 @@ img.right-arrow {
     .vacature-info {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        align-items: center;
+        /* justify-content: center;
         align-items: flex-start;
-        text-align: left; 
+        text-align: left;  */
         gap: 2em;
-        margin: 0 auto;
+        /* margin: 0 auto; */
     }
 
     .vacature-info > * {
-        display: block;
-        flex: 0 0 auto; 
-        margin: 0;
-        padding: 0;
+        min-width: 120px;
+        flex: 0;
+        text-align: left;
       }
 
       .vacature-info h3,
       .vacature-info p {
        min-width: 120px;
+      }
+
+      img.right-arrow {
+        margin-left: auto;
+        align-self: auto;
       }
     
 
