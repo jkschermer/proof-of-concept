@@ -60,9 +60,6 @@ app.get("/mensen-pagina", async (req, res) => {
       });
     });
 
-     console.log('req.session:', req.session);
-    console.log('req.session.newMessages:', req.session?.newMessages);
-
     res.render("mensen-pagina", { 
       users: peopleData, 
       messages: messagesData.data,
@@ -175,7 +172,11 @@ try {
 //     res.status(500).send('Kon niet liken');
 //   }
 // });
- 
+
+
+app.get('/', (req, res) => {
+res.render('index');
+});
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
