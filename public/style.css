@@ -7,8 +7,6 @@
 body {
     color: var(--light-background);
     background-color: var(--text-light-background);
-    /* background-color: white; */
-    /* color: black; */
     font-family: ff-tisa-sans-web-pro, sans-serif;
   }
   
@@ -87,11 +85,6 @@ ul {
 main.container {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start; */
-    /* padding-left: 0.5rem;
-    padding-right: 0.5rem; */
     max-width: 1400px;
     /* margin: 0 auto; */
     width: 100%;
@@ -100,7 +93,6 @@ main.container {
 
 .users {
     list-style-type: none;
-    /* flex: 0 1 300px;  */
     padding: 5px 0;
     width: 100%;
     max-width: 300px;
@@ -109,16 +101,8 @@ main.container {
 .user-list {
     display: grid;
     grid-template-columns: 1fr;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; */
-    /* align-items: flex-start; */
-    /* justify-content: center; */
-    /* margin: 0 auto;  */
-    /* padding: 0; */
     gap: 0.5rem;
     width: 100%;
-    /* max-width: 1400px; */
 }
 
 ul li.users {
@@ -146,16 +130,14 @@ ul li.users {
 @media (min-width: 600px)  {
     .user-list {
         grid-template-columns: repeat(2, 1fr);
-        /* justify-content: center; */
-        /* padding-left: 1.5rem; */
     }
 
 }
 
 @media (min-width: 900px)  {
         .user-list {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, 1fr);
+    }
     
  }
  
@@ -165,8 +147,6 @@ ul li.users {
     }
 
 }
-
-
 
 
 .visually-hidden {
