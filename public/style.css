@@ -5,10 +5,10 @@
 }
 
 body {
-    /* color: var(--light-background); */
-    /* background-color: var(--text-light-background); */
-    background-color: white;
-    color: black;
+    color: var(--light-background);
+    background-color: var(--text-light-background);
+    /* background-color: white; */
+    /* color: black; */
     font-family: ff-tisa-sans-web-pro, sans-serif;
   }
   
@@ -17,6 +17,13 @@ body {
     font-weight: 900;
     line-height: 110%;
   }
+
+.intro {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+} 
   
 h1 {
     font-size: 3.25rem;
@@ -41,8 +48,13 @@ ul {
 }
 
 .nav-list a {
-    color: black;
+    color: var(--Q42-green);
     text-decoration: none;
+}
+
+.nav-list{
+    color: var(--Q42-green);
+    /* text-decoration: none; */
 }
 
 
@@ -75,31 +87,37 @@ ul {
 main.container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    /* max-width: 1300px; */
+    align-items: flex-start; */
+    /* padding-left: 0.5rem;
+    padding-right: 0.5rem; */
+    max-width: 1400px;
     /* margin: 0 auto; */
     width: 100%;
+    padding: 1rem; 
 }
 
 .users {
     list-style-type: none;
-    flex: 0 1 300px; 
+    /* flex: 0 1 300px;  */
     padding: 5px 0;
+    width: 100%;
+    max-width: 300px;
 }
 
 .user-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     /* align-items: flex-start; */
-    justify-content: center;
-    margin: 0 auto; 
+    /* justify-content: center; */
+    /* margin: 0 auto;  */
+    /* padding: 0; */
     gap: 0.5rem;
-    /* width: 100%; */
+    width: 100%;
     /* max-width: 1400px; */
 }
 
@@ -125,16 +143,31 @@ ul li.users {
     margin: 0;
 }
 
-@media (max-width: 768px)  {
+@media (min-width: 600px)  {
     .user-list {
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        /* justify-content: center; */
         /* padding-left: 1.5rem; */
     }
 
-    main.container {
-        align-items: center;
-      }
 }
+
+@media (min-width: 900px)  {
+        .user-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    
+ }
+ 
+ @media (min-width: 1200px)  {
+    .user-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+
+
 
 .visually-hidden {
     position: absolute;
