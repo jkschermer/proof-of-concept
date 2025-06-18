@@ -177,7 +177,7 @@ ul li.users {
 } 
 
 .like-form {
-    display: none;
+    /* display: none; */
 }
 
 .bericht {

@@ -47,10 +47,13 @@
           <p>{{ user.email }}</p>
         </div>
 
-        {% for message in messages %}
+        {% if user.isLiked %}
+          <button class="like-btn">
+            <img src="/assets/HeartFilled.svg" alt="is geliked"></button>
+        {% else %}
           <form
             method="POST"
-            action="/like/{{ message.id }}"
+            action="/like/{{ user.id }}"
             class="like-form">
             <button type="submit" class="like-btn">
               <img
@@ -59,7 +62,8 @@
                 alt="Like" />
             </button>
           </form>
-        {% endfor %}
+        {% endif %}
+
 
         <form
           method="POST"
@@ -218,20 +222,3 @@
 </main>
 
 {% render 'partials/foot.liquid' %}
-
-
-<script>
-  document.querySelectorAll('.like-form').forEach(form => {
-  form.addEventListener('submit', async (event) => {
-  event.preventDefault(); // Voorkomt herladen van de pagina
-
-  const likeIcon = form.querySelector('.like');
-  likeIcon.src = 'assets/HeartFilled.svg';
-
-  fetch(form.action, {
-   method: 'POST',
-   }).catch(err => console.error('Error liken:', err));
-  });
-  });
-
-</script>

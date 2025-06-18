@@ -7,15 +7,6 @@ import { Liquid } from "liquidjs";
 
 const app = express(); 
 
-// import session from 'express-session';
-
-// app.use(session({
-//   secret: 'een_veilige_geheime_string', 
-//   resave: false,
-//   saveUninitialized: true,
-//   // cookie: { secure: false }
-// }));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -34,12 +25,38 @@ app.get("/mensen-pagina", async (req, res) => {
           "X-API-Key": `${process.env.API_KEY}`,
         },
       }),
-      fetch("https://fdnd.directus.app/items/messages"),
+      // fetch("https://fdnd.directus.app/items/messages"),
+      fetch("https://fdnd.directus.app/items/messages?filter[text][_eq]=like")
     ]);
 
     const messagesData = await messagesResponse.json();
-    console.log(messagesData);
+    // console.log(messagesData);
     const peopleData = await peopleResponse.json();
+
+    // console.log("Alle 'from' waarden in messages:", messagesData.data.map(m => m.from));
+
+    const userId = 3; 
+
+    const myLikes = messagesData.data.filter(like => like.from === `user-${userId}`);
+    // console.log("myLikes:", myLikes);
+
+    const likedUserIds = myLikes.map(like => {
+      return like.for.split("-").pop();
+
+
+    });
+
+    const uniqueLikedUserIds = [...new Set(likedUserIds)];
+    // console.log("uniqueLikedUserIds (zonder dubbele):", uniqueLikedUserIds);
+
+
+
+    peopleData.forEach(user => {
+      user.isLiked = uniqueLikedUserIds.includes(String(user.id));
+      // console.log(`User ${user.id} (${user.name}) liked?`, user.isLiked);
+    });
+
+
 
     // console.log(peopleData[0].tags[0]);
     // ik haal de eerst persoon op en de tag die daarbij hoort
@@ -64,9 +81,6 @@ app.get("/mensen-pagina", async (req, res) => {
     res.render("mensen-pagina", { 
       users: peopleData, 
       messages: messagesData.data,
-      // newMessage: req.session.newMessage || null, }); 
-      // newMessages: req.session.newMessages || [], 
-      // likedMessages: req.session.likedMessages || []
     });
       // console.log(messagesData)
 
@@ -93,13 +107,6 @@ app.post('/mensen-pagina' , async (req, res) =>  {
 const newMessage = await response.json();
 // console.log(newMessage);
 
-// if (!req.session.newMessages) {
-//   req.session.newMessages = [];
-// }
-
-// req.session.newMessages.push(newMessage.data);
-// console.log('Sessie newMessages:', req.session.newMessages);
-
 
  res.redirect('/mensen-pagina');
 
@@ -114,7 +121,9 @@ const newMessage = await response.json();
 app.post('/like/:id', async function (req, res) {
   const werknemerId  = req.params.id;
   const userId = 3; 
-  console.log(werknemerId);
+
+  console.log('userId (liker):', userId);
+console.log('werknemerId (liked):', werknemerId);
 
 
 try {
@@ -137,12 +146,8 @@ console.log(responseData);
   if (!postResponse.ok) throw new Error('Fout bij het liken');
   
 
-  res.render("mensen-pagina", {  
-    messages: responseData,
-    // newMessage: req.session.newMessage || null, }); 
-    // newMessages: req.session.newMessages || [], 
-    // likedMessages: req.session.likedMessages || []
-  });
+  res.redirect('/mensen-pagina');
+
   // console.log('Like succesvol opgeslagen');
 
   // res.redirect('/mensen-pagina');
@@ -154,16 +159,15 @@ console.log(responseData);
 
 });
 
-
+app.get('/', (req, res) => {
+  res.render('index');
+  });
+  
 
 app.use((req, res) => {
   res.status(404).send('404 - Pagina niet gevonden');
 });
 
-
-app.get('/', (req, res) => {
-res.render('index');
-});
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
