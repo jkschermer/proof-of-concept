@@ -8,6 +8,7 @@ body {
     color: var(--light-background);
     background-color: var(--text-light-background);
     font-family: ff-tisa-sans-web-pro, sans-serif;
+    font-size: 16px;
   }
   
 .heading,h1,h2,h3,h4,h5 {
@@ -32,10 +33,39 @@ nav {
     display: none;
 }
 
-.hamburger-icoon, 
-.menu text, 
-.contact {
-    display: inline;
+.menu-buttons {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ /* width: 100%; */
+ padding: 0.5rem 0.5rem;
+}
+
+.close-button {
+    display: none;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-icoon,
+.menu-text, 
+.contact { 
+     padding:  0;
+     margin: 0;
+} 
+
+.hamburger-icoon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+.close-icoon {
+    width: 24px;
+    height: 24px;
 }
 
 .menu-toggle {
@@ -45,18 +75,25 @@ nav {
 
 .menu-toggle:checked ~ nav {
     display: block;
+    height: 100vh;
     background-color: var(--Q42-green);
     width: 80%;
 }
 
-.menu-toggle:checked ~ .menu-button .hamburger-icoon,
-.menu-toggle:checked ~ .menu-button .menu-text,
-.menu-toggle:checked ~ .contact  {
+.menu-toggle:checked ~ .menu-buttons .hamburger-icoon,
+.menu-toggle:checked ~ .menu-buttons .menu-text,
+.menu-toggle:checked ~ .menu-buttons .contact  {
     display:none
 }
 
-.menu-toggle:checked ~ .close-icoon{
+.menu-toggle:checked ~ .close-button{
     display: inline-block;
+    position: fixed;
+    top: 2px;
+    right: 50px;
+    cursor: pointer;
+    color: white;
+    z-index: 1000;
 }
 
 .contact, .menu-text  {
@@ -67,11 +104,16 @@ nav {
 .nav-list a {
     color: var(--text-dark-background);
     text-decoration: none;
+    display: block;
     padding: 10px;
 }
 
 .nav-list a:hover {
     color: var(--text-dark-background);
+}
+
+.nav-list a:focus {
+    border: 1 solid black;
 }
 
 .nav-list {
@@ -94,14 +136,13 @@ nav {
     display: block;
    }
 
-    .menu-button, .contact, img.close-icoon  {
+   .nav-list a  {
+    color: var(--Q42-green);
+   }
+
+    .menu-button, .contact, .close-icoon, .close-button  {
     display: none;
    }
-}
-
-.close-icoon {
-    display: inline-block;
-    margin-left: auto;
 }
 
 
