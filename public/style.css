@@ -114,13 +114,13 @@ ul li.users {
 
 .text-block {
     position: absolute;
-    bottom: 160px;
+    bottom: 180px;
     left:1px;
     width: 200px;
-    background-color: pink;
+    background-color:transparent;
     padding: 10px;
     z-index: 10;
-    display: none;
+    display: none; 
 }
 
 .text-block h2 {

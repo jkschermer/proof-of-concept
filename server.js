@@ -155,35 +155,10 @@ console.log(responseData);
 });
 
 
-// app.post('/like/:id', async(req,res)=> {
-//   const likeId = req.params.id;
-//   console.log(`Like ontvangen voor bericht ID: ${likeId}`);
-//   try {
 
-//     const getResponse = await fetch(`https://fdnd.directus.app/items/messages/${likeId}`);
-//     if (!getResponse.ok) throw new Error('Bericht niet gevonden');
-//     const messageData = await getResponse.json();
-
-//     const currentLikes = messageData.data.likes || 0;
-
-//     const patchResponse = await fetch(`https://fdnd.directus.app/items/messages/${likeId}`, {
-//       method: 'PATCH',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify
-//         ({ likes: currentLikes + 1 }),   
-//     }); 
-
-//     if (!patchResponse.ok) throw new Error('Kon likes niet updaten');
-
-//     console.log(`Likes succesvol bijgewerkt voor bericht ID: ${likeId}`);
-
-//     res.redirect('/mensen-pagina');
-
-//   } catch (error) {
-//     console.error('Fout bij liken:', error);
-//     res.status(500).send('Kon niet liken');
-//   }
-// });
+app.use((req, res) => {
+  res.status(404).send('404 - Pagina niet gevonden');
+});
 
 
 app.get('/', (req, res) => {
