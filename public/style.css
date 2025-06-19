@@ -252,6 +252,13 @@ ul li.users {
     /* display: none; */
 }
 
+.like-btn {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    border:none;
+}
+
 .bericht {
     font-size: large;
     /* display: none; */
