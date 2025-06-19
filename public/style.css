@@ -75,9 +75,13 @@ nav {
 
 .menu-toggle:checked ~ nav {
     display: block;
+    /* position: fixed;
+    top: 0;
+    left: 0; */
     height: 100vh;
     background-color: var(--Q42-green);
     width: 80%;
+    /* z-index: 10; */
 }
 
 .menu-toggle:checked ~ .menu-buttons .hamburger-icoon,
@@ -86,10 +90,14 @@ nav {
     display:none
 }
 
+.menu-toggle:checked ~ .menu-buttons {
+    padding: 0;
+}
+
 .menu-toggle:checked ~ .close-button{
     display: inline-block;
     position: fixed;
-    top: 2px;
+    top: 0x;
     right: 50px;
     cursor: pointer;
     color: white;
@@ -245,7 +253,8 @@ ul li.users {
 }
 
 .bericht {
-    display: none;
+    font-size: large;
+    /* display: none; */
 }
 
 .vacature {
