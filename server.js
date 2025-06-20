@@ -26,16 +26,19 @@ app.get("/mensen-pagina", async (req, res) => {
         },
       }),
       fetch("https://fdnd.directus.app/items/messages?filter[text][_eq]=like"),
-      fetch("https://fdnd.directus.app/items/messages"),
+      // haal alle berichten op die ik heb verstuurd naar de gebruikers
+      fetch("https://fdnd.directus.app/items/messages?filter[from][_eq]=Akikko"),
     ]);
 
     const likesData = await likesResponse.json();
     console.log(likesData);
     const messagesData = await messagesResponse.json();
-    console.log(messagesData);
+    console.log('messsages data', messagesData);
     const peopleData = await peopleResponse.json();
     console.log(peopleData);
     const allMessages = messagesData.data;
+
+    console.log('Alle berichten' + JSON.stringify(allMessages, null, 2));
 
     const myUserName = 'Akikko'; // jouw naam als afzender
     

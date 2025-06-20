@@ -64,22 +64,12 @@
           </form>
         {% endif %}
 
-
-        {% if user.messages and user.messages.length > 0 %}
-          <ul>
-            {% for message in user.messages %}
-              <li>{{ message.text }} (van: {{ message.from }})</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>Geen berichten voor deze persoon.</p>
-        {% endif %}
-
         <form
           method="POST"
           action="/mensen-pagina"
           class="message-form">
-          <input name="for" value="{{ user.name }}">
+          <label>{{user.name}}</label>
+          <input name="for" hidden value="{{ user.name }}">
           <label for="from-{{ user.id }}">Naam:</label>
           <input
             type="text"
@@ -94,6 +84,16 @@
             required>
           <button type="submit">Verzenden</button>
         </form>
+
+         {% if user.messages and user.messages.length > 0 %}
+          <ul>
+            {% for message in user.messages %}
+              <li>{{ message.text }} (van: {{ message.from }})</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Geen berichten voor deze persoon.</p>
+        {% endif %}
 
       {% comment %} 
                                                                                                                                 <form
