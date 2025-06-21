@@ -33,10 +33,13 @@
               height="300"
               loading="lazy"
               class="avatar avatar-1">
+               <p style="text-align:center; color: green">
+              Avatar beschikbaar
+            </p>
 
           {% else %}
-            <p>
-              Geen afbeelding beschikbaar
+            <p style="text-align:center; color: red">
+              Geen avatar beschikbaar
             </p>
           {% endif %}
         </label>
@@ -68,15 +71,15 @@
           method="POST"
           action="/mensen-pagina"
           class="message-form">
-          <label>{{user.name}}</label>
+          <label style="text-align:center">{{user.name}}</label>
           <input name="for" hidden value="{{ user.name }}">
-          <label for="from-{{ user.id }}">Naam:</label>
+          <label for="from-{{ user.id }}">Afzender:</label>
           <input
             type="text"
             id="from-{{ user.id }}"
             name="from"
             required>
-          <label for="text-{{ user.id }}">Reactie:</label>
+          <label for="text-{{ user.id }}">Reageren:</label>
           <input
             type="text"
             id="text-{{ user.id }}"
@@ -86,13 +89,15 @@
         </form>
 
          {% if user.messages and user.messages.length > 0 %}
-          <ul>
+                   <p style="text-align:center">Reacties:</p>
+          <ul style="text-align:center">
             {% for message in user.messages %}
-              <li>{{ message.text }} (van: {{ message.from }})</li>
+              <li style="list-style: none;">{{ message.text }}</li>
+              <li style="list-style: none;font-style:italic">van: {{ message.from }}</li>
             {% endfor %}
           </ul>
         {% else %}
-          <p>Geen berichten voor deze persoon.</p>
+          <p style="text-align:center">Geen reacties voor deze persoon:</p>
         {% endif %}
 
       {% comment %} 
