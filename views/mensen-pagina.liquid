@@ -85,20 +85,27 @@
             id="text-{{ user.id }}"
             name="text"
             required>
-          <button type="submit">Verzenden</button>
+          <button class="q42-button" type="submit">Verzenden</button>
         </form>
 
-         {% if user.messages and user.messages.length > 0 %}
-                   <p style="text-align:center">Reacties:</p>
-          <ul style="text-align:center">
-            {% for message in user.messages %}
-              <li style="list-style: none;">{{ message.text }}</li>
-              <li style="list-style: none;font-style:italic">van: {{ message.from }}</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p style="text-align:center">Geen reacties voor deze persoon:</p>
-        {% endif %}
+{% if user.messages and user.messages.size > 0 %}
+<p style="text-align:center">Reacties:</p>
+  <ul id="messages-{{ user.id }}">
+    {% for message in user.messages %}
+      <li style="list-style:none" class="{% if forloop.index > 3 %}extra-message hidden{% endif %}">
+        {{ message.text }} (van: {{ message.from }})
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if user.messages.size > 3 %}
+    <button class="q42-button" onclick="toggleMessages('{{ user.id }}')" id="toggle-btn-{{ user.id }}">
+      Toon meer reacties
+    </button>
+  {% endif %}
+{% else %}
+  <p style="text-align:center">Geen reacties</p>
+{% endif %}
 
       {% comment %} 
                                                                                                                                 <form
@@ -123,7 +130,7 @@
                                                                                                                                     name="text"
                                                                                                                                     required>
 
-                                                                                                                                  <button type="submit">verzenden</button>
+                                                                                                                                  <button type="submit">Reageren</button>
                                                                                                                                 </form>
 
 
@@ -238,7 +245,22 @@
 
   <a href="https://werkenbij.q42.nl" class="vacature-btn">Bekijk alle vacatures op homerun</a>
 
+  <script>
+    function toggleMessages(userId) {
+      const messages = document.querySelectorAll(`#messages-${userId} .extra-message`);
+      const btn = document.getElementById(`toggle-btn-${userId}`);
+      const isHidden = messages[0]?.classList.contains('hidden');
 
+      messages.forEach(msg => msg.classList.toggle('hidden'));
+
+      btn.textContent = isHidden ? 'Toon minder reacties' : 'Toon meer reacties';
+    }
+  </script>
+  <style>
+  .hidden {
+    display: none;
+  }
+</style>
 </main>
 
 {% render 'partials/foot.liquid' %}

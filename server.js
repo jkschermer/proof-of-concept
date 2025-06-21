@@ -31,11 +31,10 @@ app.get("/mensen-pagina", async (req, res) => {
     ]);
 
     const likesData = await likesResponse.json();
-    console.log(likesData);
+
+    // console.log("likes:" +  JSON.stringify(likesData, null, 2));
     const messagesData = await messagesResponse.json();
-    console.log('messsages data', messagesData);
     const peopleData = await peopleResponse.json();
-    console.log(peopleData);
     const allMessages = messagesData.data;
 
     console.log('Alle berichten' + JSON.stringify(allMessages, null, 2));
@@ -57,11 +56,6 @@ const myUser = peopleData.filter(person => {
 });
 
 const users = peopleData.map(person => person.name);
-console.log(users);
-
-console.log('mensen data' + peopleData);
-
-console.log('Gebruiker gevonden:', myUser);
 
 console.log('Berichten van Akikko:', myMessages);
 
@@ -83,7 +77,7 @@ console.log('Berichten van Akikko:', myMessages);
     const userId = 3; 
 
     const myLikes = likesData.data.filter(like => like.from === `user-${userId}`);
-    // console.log("myLikes:", myLikes);
+    console.log("myLikes:", myLikes);
 
     const likedUserIds = myLikes.map(like => {
       return like.for.split("-").pop();
@@ -92,7 +86,7 @@ console.log('Berichten van Akikko:', myMessages);
     });
 
     const uniqueLikedUserIds = [...new Set(likedUserIds)];
-    // console.log("uniqueLikedUserIds (zonder dubbele):", uniqueLikedUserIds);
+    console.log("uniqueLikedUserIds (zonder dubbele):", uniqueLikedUserIds);
 
 
 
