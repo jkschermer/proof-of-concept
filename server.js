@@ -60,20 +60,6 @@ const users = peopleData.map(person => person.name);
 console.log('Berichten van Akikko:', myMessages);
 
 
-    // Log alle 'from' waardes om te zien wat er in zit
-    // console.log('Alle from waardes:', allMessages.map(m => m.from));
-
-    // Robuuste filter voor user-3 berichten
-    // const myUserId = 'user-3';
-    // const myMessages = allMessages.filter(msg => {
-    //   if (!msg.from) return false;
-    //   return msg.from.trim() === myUserId;
-    // });
-
-    // console.log('Gefilterde berichten van user-3:', myMessages);
-
-    // console.log("Alle 'from' waarden in messages:", messagesData.data.map(m => m.from));
-
     const userId = 3; 
 
     const myLikes = likesData.data.filter(like => like.from === `user-${userId}`);
@@ -117,43 +103,19 @@ console.log('Berichten van Akikko:', myMessages);
       });
     });
 
-    // const allMessages = messagesData.data;
-
-    // const myUserName = 'Akikooo';
-
-// const myMessages = allMessages.filter(msg => msg.from === myUserName);
-
-    // const allMessages = messagesData.data.filter(msg => msg.text !== "like");
-
-    // const newMessages = messagesData.data.filter(msg => msg.text !== 'like');
-
-    // const myMessages = allMessages.filter(msg => msg.from === `user-${userId}`);
-
-//     const allMessages = messagesData.data;
-//     const myUserId = 'user-3'; // vaste user ID
-
-//     const myMessages = allMessages.filter(msg => msg.from && msg.from.includes('3'));
-// console.log('Gefilterde berichten:', myMessages);
-
-
-// const myMessages = allMessages.filter(msg => msg.from === myUserId);
-// console.log('Alle from waardes in messages:', allMessages.map(m => m.from));
 peopleData.forEach(user => {
-  console.log('gebruiker' + user.name);
   user.messages = allMessages.filter(m => m.for === user.name && m.from === 'Akikko');
-  
-  console.log(user.messages);
 });
+
+console.log(peopleData);
 
 
     res.render("mensen-pagina", { 
       users: peopleData, 
       likes: likesData.data,
-      // messages: messagesData.data,
       messages: myMessages,
       myUser: myUser
     });
-      // console.log(messagesData)
 
   } catch (err) {
     console.error("Fout bij ophalen:", err);

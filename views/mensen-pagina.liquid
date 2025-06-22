@@ -71,6 +71,9 @@
           method="POST"
           action="/mensen-pagina"
           class="message-form">
+            {% for tag in user.tags %}
+            <button class="tag-btn">{{tag}}</button>
+    {% endfor %}
           <label style="text-align:center">{{user.name}}</label>
           <input name="for" hidden value="{{ user.name }}">
           <label for="from-{{ user.id }}">Afzender:</label>

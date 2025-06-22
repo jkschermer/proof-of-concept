@@ -467,6 +467,17 @@ img.right-arrow {
     border-radius: 4px;
     cursor: pointer;
   }
+.tag-btn {
+    background-color: #d1d9be;
+    border: none;
+    border-radius: 3px;
+    color: #7f9054;
+    flex-grow: 1;
+    font-size: 16px;
+    margin: 2px;
+}
 
-
+.tag-btn:hover {
+    background-color: white;
+  }
 }
