@@ -6,10 +6,16 @@
     <h1>De mensen van Q42</h1>
     <p>Onze mensen noemen we Q'ers. Maar wie zijn dat dan? Die Q'ers die het internet aan het afmaken zijn? Check ze allemaal hieronder. En wil je ook Q'er worden, scroll dan even voorbij onze hoofden voor de openstaande vacatures!</p>
   </section>
+  <button class="tag-btn filter-btn" data-tag="all">Reset filter</button>
 
+{% for tag in tags %}
+  <button class="tag-btn filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+{% endfor %}
   <ul class="user-list">
     {% for user in users %}
-      <li class="users">
+
+      <li class="user" data-tags="{{ user.tags | join: ',' }}">
+
         <label class="avatars-toggle">
           <input type="checkbox" class="visually-hidden">
           {% if user.avatars and user.avatars[0] %}
@@ -258,6 +264,32 @@
 
       btn.textContent = isHidden ? 'Toon minder reacties' : 'Toon meer reacties';
     }
+
+    function getTags(tagString) {
+  const specialTag = "Short hair, don't care";
+  if (tagString === specialTag) {
+    return [specialTag];
+  }
+  return tagString.split(",").map(t => t.trim());
+}
+
+  function filterUsersByTag(tag) {
+    const users = document.querySelectorAll(".user");
+    users.forEach(user => {
+      const tags = getTags(user.dataset.tags);
+      console.log(tags);
+      const shouldShow = tag === "all" || tags.includes(tag);
+      user.style.display = shouldShow ? "list-item" : "none";
+    });
+  }
+
+  // Voeg click listeners toe aan alle tag-buttons
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tag = btn.dataset.tag;
+      filterUsersByTag(tag);
+    });
+  });
   </script>
   <style>
   .hidden {

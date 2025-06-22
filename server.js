@@ -35,13 +35,12 @@ app.get("/mensen-pagina", async (req, res) => {
     // console.log("likes:" +  JSON.stringify(likesData, null, 2));
     const messagesData = await messagesResponse.json();
     const peopleData = await peopleResponse.json();
+
+    console.log('mensen' + JSON.stringify(peopleData, null, 2));
+
     const allMessages = messagesData.data;
 
-    console.log('Alle berichten' + JSON.stringify(allMessages, null, 2));
-
     const myUserName = 'Akikko'; // jouw naam als afzender
-    
-    // console.log(('alle berichten' + allMessages));
 
 const myMessages = allMessages.filter(msg => {
   if (!msg.from) return false;
@@ -57,13 +56,10 @@ const myUser = peopleData.filter(person => {
 
 const users = peopleData.map(person => person.name);
 
-console.log('Berichten van Akikko:', myMessages);
-
 
     const userId = 3; 
 
     const myLikes = likesData.data.filter(like => like.from === `user-${userId}`);
-    console.log("myLikes:", myLikes);
 
     const likedUserIds = myLikes.map(like => {
       return like.for.split("-").pop();
@@ -73,8 +69,6 @@ console.log('Berichten van Akikko:', myMessages);
 
     const uniqueLikedUserIds = [...new Set(likedUserIds)];
     console.log("uniqueLikedUserIds (zonder dubbele):", uniqueLikedUserIds);
-
-
 
     peopleData.forEach(user => {
       user.isLiked = uniqueLikedUserIds.includes(String(user.id));
@@ -103,6 +97,10 @@ console.log('Berichten van Akikko:', myMessages);
       });
     });
 
+    const tags = peopleData.map(data => data.tags);
+
+    const uniqueTags = [...new Set(tags.flat())];
+
 peopleData.forEach(user => {
   user.messages = allMessages.filter(m => m.for === user.name && m.from === 'Akikko');
 });
@@ -111,7 +109,8 @@ console.log(peopleData);
 
 
     res.render("mensen-pagina", { 
-      users: peopleData, 
+      users: peopleData,
+      tags: uniqueTags, 
       likes: likesData.data,
       messages: myMessages,
       myUser: myUser

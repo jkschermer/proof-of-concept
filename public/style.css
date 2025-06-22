@@ -313,6 +313,30 @@ img.right-arrow {
     height: 40px;      
 }
 
+.q42-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #84bc2d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.tag-btn {
+    background-color: #d1d9be;
+    border: none;
+    border-radius: 3px;
+    color: #7f9054;
+    flex-grow: 1;
+    font-size: 16px;
+    margin: 2px;
+}
+
+.tag-btn:hover {
+    background-color: white;
+  }
+
 .vacature-btn:hover {
     background-color: lightgreen;
 }
@@ -457,27 +481,4 @@ img.right-arrow {
 .footer-bottom {
     grid-area: bottom;
 }
-
-.q42-button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #84bc2d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-.tag-btn {
-    background-color: #d1d9be;
-    border: none;
-    border-radius: 3px;
-    color: #7f9054;
-    flex-grow: 1;
-    font-size: 16px;
-    margin: 2px;
-}
-
-.tag-btn:hover {
-    background-color: white;
-  }
 }
